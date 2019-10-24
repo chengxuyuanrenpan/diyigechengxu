@@ -1,7 +1,7 @@
 <?php
 namespace User\Controller;
 use Think\Controller;
-class BuqianController extends Controller {
+class BController extends Controller {
 	/*---------------------------补签--------------------------------------*/
 	public function index($user='',$check=''){
 		$check = $this->unlock_url($check);
