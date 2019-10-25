@@ -13,30 +13,28 @@ class BController extends Controller {
 				$this->ajaxReturn(array('status'=>301,'info'=>'非法请求'));
 			}
 
-			//获取本周周一到周日的日期
-	        $week = date('w');
-	        $aa = $week-3;
-	        $bb = $week+3;
+		//获取本周周一到周日的日期
+	        $week 	= date('w');
+	        $aa 	= $week-3;
+	        $bb 	= $week+3;
 	       
 	        for ($i=$aa; $i <=$bb ; $i++) {
-	        	$kentas[$i] = date('Ymd', (time() + ($i - (date('w') == 0 ? 7 : date('w'))) * 24 * 3600));
-	        	$tyt = strtotime(date('Ymd', (time() + ($i - (date('w') == 0 ? 7 : date('w'))) * 24 * 3600)));
-	        	$xingqi[$i] = date('w', $tyt);
+	        	$kentas[$i] 	= date('Ymd', (time() + ($i - (date('w') == 0 ? 7 : date('w'))) * 24 * 3600));
+	        	$tyt 		= strtotime(date('Ymd', (time() + ($i - (date('w') == 0 ? 7 : date('w'))) * 24 * 3600)));
+	        	$xingqi[$i] 	= date('w', $tyt);
 	        }
 	       
 	        foreach ($xingqi as $key => $value) {
-	        	if($value ==1){$value = "一";}elseif($value ==2){$value = "二";}elseif($value ==3){
-	        		$value = "三";
-	        	}elseif($value ==4){$value = "四";}elseif($value ==5){$value = "五";}elseif($value ==6){$value = "六";}else{$value = "天";}
-	        	$otm[$key] = $value;
+	        	if($value ==1){$value = "一";}elseif($value ==2){$value = "二";}elseif($value ==3){$value = "三";}elseif($value ==4)
+			{$value = "四";}elseif($value ==5){$value = "五";}elseif($value ==6){$value = "六";}else{$value = "天";}$otm[$key] = $value;
 	        }
 
 	        //日期
 	        foreach ($kentas as $key => $value) {
-	        	$signs = M('sign')->where(array('user_id'=>$user,'date'=>$value))->order("create_time desc")->find();
+	        	$signs 		= M('sign')->where(array('user_id'=>$user,'date'=>$value))->order("create_time desc")->find();
 	        	$tuyt[$key] 	= $value;
 	        	$sings[$key] 	= $signs['money'];
-	        	$num[$key] 		= $signs['num'];
+	        	$num[$key] 	= $signs['num'];
 	        }
 
 	        //合并
@@ -52,7 +50,6 @@ class BController extends Controller {
 			        $result[$i][$value] = ${$key}[$value][$i];
 			    }
 			}
-
 			$this->ajaxReturn(array('status'=>1,'info'=>'请求成功！','result'=>$result));
 		}
 	}
