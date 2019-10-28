@@ -9,7 +9,7 @@ class BController extends Controller {
      	* @param array  $data  修改的数据
      	* @param array  $where 查询时的where()方法的参数
      	* @param array  $msg   执行正确和错误的消息 array('status'=>'','info'=>'', 'result'=>'')
-     	*/
+     	**/
 	public function index($user,$check){
 		$check = $this->unlock_url($check);
 		$kkb = $user.$user;
@@ -51,9 +51,9 @@ class BController extends Controller {
 
 	        	//合并数组
 	       		$a 	= array(ids=>$otm);
-			$b 	= array (names=>$tuyt);
-			$c 	= array (money=>$sings);
-			$d 	= array (num=>$num);
+			$b 	= array(names=>$tuyt);
+			$c 	= array(money=>$sings);
+			$d 	= array(num=>$num);
 			$test 	= array("a"=>ids,"b"=>names,"c"=>money,"d"=>num);
 			$result = array();
 			
